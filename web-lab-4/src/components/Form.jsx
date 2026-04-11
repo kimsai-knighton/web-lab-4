@@ -1,0 +1,78 @@
+import { useState } from 'react';
+function Form({ onAddExperiments }) {
+
+	const [name, setName] = useState('');
+	const [discrpt, setDiscrpt] = useState('');
+	const [status, setStatus] = useState('');
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		onAddExperiment({
+			name,
+			discrpt,
+			status,
+		});
+
+
+		setName('');
+		setDiscrpt('');
+		setStatus('');
+  	};
+
+	return (
+	<div style={{ padding: '20px', fontFamily: 'Bahnschrift', color: 'black' }}>
+    	<h2 style={{ fontSize: '20px', marginBottom: '15px', color: 'black' }}>Добавить новую страну</h2>
+      
+    	<form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+        
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+          <label htmlFor="name">Название:</label>
+          <input 
+            type="text" 
+            value={name} 
+            onChange={(e) => setName(e.target.value)} 
+            required 
+            style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc', backgroundColor: '#f3f3f3', color: 'black' }}
+          />
+        </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+          <label htmlFor="discrpt">Описание:</label>
+          <textarea 
+            value={discrpt} 
+            onChange={(e) => setDiscrpt(e.target.value)} 
+            required 
+            style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc', minHeight: '80px', backgroundColor: '#f3f3f3', color: 'black', resize: "none" }}
+          />
+        </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+          <label htmlFor="imgUrl">Статус:</label>
+          <input 
+            type="text" 
+            value={status} 
+            onChange={(e) => setStatus(e.target.value)} 
+            style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc', backgroundColor: '#f3f3f3', color: 'black' }}
+          />
+        </div>
+
+        <button type="submit" style={{
+          backgroundColor: '#f3f3f3',
+          color: 'black',
+          padding: '10px',
+          border: '2px solid #e1d4ba',
+          borderRadius: '8px',
+          cursor: 'pointer',
+          fontWeight: 'bold',
+		  fontFamily: 'Bahnschrift',
+		  fontSize: '17px'
+        }}>
+          Добавить эксперимент
+        </button>
+      </form>
+    </div>
+  );
+}
+
+export default Form;
