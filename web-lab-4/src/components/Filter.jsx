@@ -1,5 +1,9 @@
 import { useState, useEffect } from 'react';
-function Filter({status}) {
+function Filter({ onFilterChange }) {
+
+	const handleChange = (e) => {
+        onFilterChange(e.target.value);
+    };
 
 	return (
     <div style={{
@@ -14,9 +18,20 @@ function Filter({status}) {
 		color: 'black',
 		alignItems: 'center',
 		justifyContent: 'space-between',
-		backgroundColor: "#e3e7ef"
+		backgroundColor: "#e3e7ef",
+		margin: "5px",
+		marginBottom: '15px'
 	}}>
-		жопажопа
+		
+		<form className="filter-form">
+            <label htmlFor="filter-select" className="filter-label">Показать: </label>
+            <select name="filter" id="filter-select" className="filter-select" onChange={handleChange}>
+                <option value="all">Все</option>
+                <option value="future">В планах</option>
+                <option value="now">В процессе</option>
+                <option value="done">Завершён</option>
+            </select>
+        </form>
 
     </div>
   );

@@ -5,7 +5,6 @@ body {
 
 .my-app {
 	display: flex;
-	border: solid red;
 	flex-direction: column;
 	align-items: center;
 }
@@ -24,7 +23,30 @@ body {
 	flex-direction: column;
 
 	margin: 5px;
-	margin-bottom: 20px;
+	margin-top: 30px;
+	margin-bottom: 30px;
 	border: solid 2px #1e1e1e;
 	border-radius: 8px;
 }
+
+.filter-form {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-family: 'Bahnschrift', sans-serif;
+}
+
+.filter-label {
+    font-weight: bold;
+    color: #1e1e1e;
+}
+
+.filter-select {
+    padding: 8px 12px;
+    border: 2px solid #1e1e1e;
+    border-radius: 8px;
+    background-color: #ffffff9b;
+    font-family: 'Bahnschrift', sans-serif;
+    cursor: pointer;
+}
+

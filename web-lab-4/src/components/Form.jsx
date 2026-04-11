@@ -1,5 +1,5 @@
 import { useState } from 'react';
-function Form({ onAddExperiments }) {
+function Form({ onAddExperiment }) {
 
 	const [name, setName] = useState('');
 	const [discrpt, setDiscrpt] = useState('');
@@ -20,9 +20,11 @@ function Form({ onAddExperiments }) {
 		setStatus('');
   	};
 
+
+
 	return (
 	<div style={{ padding: '20px', fontFamily: 'Bahnschrift', color: 'black' }}>
-    	<h2 style={{ fontSize: '20px', marginBottom: '15px', color: 'black' }}>Добавить новую страну</h2>
+    	<h2 style={{ fontSize: '20px', marginBottom: '15px', color: 'black' }}>Добавить новый эксперимент</h2>
       
     	<form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
         
@@ -49,12 +51,11 @@ function Form({ onAddExperiments }) {
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
           <label htmlFor="imgUrl">Статус:</label>
-          <input 
-            type="text" 
-            value={status} 
-            onChange={(e) => setStatus(e.target.value)} 
-            style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc', backgroundColor: '#f3f3f3', color: 'black' }}
-          />
+			<select name="filter" id="filter-select" className="filter-select">
+                <option value="future">В планах</option>
+                <option value="now">В процессе</option>
+                <option value="done">Завершён</option>
+            </select>
         </div>
 
         <button type="submit" style={{

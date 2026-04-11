@@ -18,8 +18,31 @@ function App() {
             name: "Окисление", 
             discrpt: "Провести оксиление",
 			status: "Завершён ✅"
+        },
+		        { 
+            id: 3, 
+            name: "Электролизка", 
+            discrpt: "Провести электролиз водички",
+			status: "В процессе ⌛"
+        },
+		{ 
+            id: 4, 
+            name: "Окисление", 
+            discrpt: "Провести оксиление",
+			status: "Завершён ✅"
         }
     ]);
+
+	const [filterStatus, setFilterStatus] = useState('all');
+
+	const filteredExperiments = experiments.filter(exp => {
+        if (filterStatus === 'all') return true;
+        // Важно: значения здесь должны совпадать с value в select
+        if (filterStatus === 'now') return exp.status === "В процессе ⌛";
+        if (filterStatus === 'done') return exp.status === "Завершён ✅";
+        if (filterStatus === 'future') return exp.status === "В планах";
+        return true;
+    });
 
 	const addNewExperiment = (newExperiment) => {
 		const ExpWithId = { ...newExperiment, id: Date.now() };
@@ -33,12 +56,12 @@ function App() {
 				<Form onAddExperiments={addNewExperiment} />
 			</div>
 			<div className="filter">
-				<Filter />
+				<Filter onFilterChange={setFilterStatus} />
 			</div>
 		</div>
 
 		<div className='experiments'>
-			{experiments.map((experiment) => (
+			{filteredExperiments.map((experiment) => (
 				<ExpCard 
 					key={experiment.id}
 					name={experiment.name} 
