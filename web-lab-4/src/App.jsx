@@ -9,7 +9,7 @@ function App() {
 	let [experiments, setExperiments] = useState([
         { 
             id: 1, 
-            name: "Электролиз", 
+            name: "Электролизка", 
             discrpt: "Провести электролиз водички",
 			status: "В процессе ⌛"
         },
