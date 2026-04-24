@@ -18,7 +18,7 @@ function Filter({ onFilterChange }) {
 		color: 'black',
 		alignItems: 'center',
 		justifyContent: 'space-between',
-		backgroundColor: "#e3e7ef",
+		backgroundColor: "#f9f0ec",
 		margin: "5px",
 		marginBottom: '15px'
 	}}>
