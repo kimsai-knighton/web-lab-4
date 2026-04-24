@@ -3,28 +3,29 @@ function Form({ onAddExperiment }) {
 
 	const [name, setName] = useState('');
 	const [discrpt, setDiscrpt] = useState('');
-	const [status, setStatus] = useState('');
+	const [status, setStatus] = useState('future');
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-
-		onAddExperiment({
-			name,
-			discrpt,
-			status,
-		});
-
+	
+		const statusWithEmoji = 
+			status === 'now' ? "В процессе ⌛" : 
+			status === 'done' ? "Завершён ✅" : "В планах 🕒";
+	
+		onAddExperiment({ name, discrpt, status: statusWithEmoji });
 
 		setName('');
 		setDiscrpt('');
-		setStatus('');
-  	};
+		setStatus('future');
+	};
 
 
 
 	return (
 	<div style={{ padding: '20px', fontFamily: 'Bahnschrift', color: 'black' }}>
-    	<h2 style={{ fontSize: '20px', marginBottom: '15px', color: 'black' }}>Добавить новый эксперимент</h2>
+    	
+		
+		<h2 style={{ fontSize: '20px', marginBottom: '15px', color: 'black' }}><center>Добавить новый эксперимент</center></h2>
       
     	<form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
         
@@ -51,12 +52,14 @@ function Form({ onAddExperiment }) {
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
           <label htmlFor="imgUrl">Статус:</label>
-			<select name="filter" id="filter-select" className="filter-select">
+			<select name="filter" id="filter-select" value={status} onChange={(e) => setStatus(e.target.value)} className="filter-select" >
                 <option value="future">В планах</option>
                 <option value="now">В процессе</option>
                 <option value="done">Завершён</option>
             </select>
         </div>
+
+		
 
         <button type="submit" style={{
           backgroundColor: '#f3f3f3',
