@@ -50,11 +50,13 @@ function App() {
         setExperiments(experiments.filter(exp => exp.id !== id));
     };
 
+	const count = experiments.filter(exp => exp.status === "Завершён ✅").length;
+
     return (
         <div className="my-app">
             <div>
                 <div className="form">
-                    <Form onAddExperiment={addNewExperiment} />
+					<Form onAddExperiment={addNewExperiment} count={count} />
                 </div>
                 <div className="filter">
                     <Filter onFilterChange={setFilterStatus} />
