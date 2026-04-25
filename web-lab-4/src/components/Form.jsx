@@ -1,5 +1,5 @@
 import { useState } from 'react';
-function Form({ onAddExperiment }) {
+function Form({ onAddExperiment, count }) {
 
 	const [name, setName] = useState('');
 	const [discrpt, setDiscrpt] = useState('');
@@ -24,6 +24,7 @@ function Form({ onAddExperiment }) {
 	return (
 	<div style={{ padding: '20px', fontFamily: 'Bahnschrift', color: 'black' }}>
     	
+		<h6 style={{ fontSize: '14px', marginTop: '-10px', marginBottom: '-5px', color: 'gray' }}><center>количество выполненных: {count}</center></h6>
 		
 		<h2 style={{ fontSize: '20px', marginBottom: '15px', color: 'black' }}><center>Добавить новый эксперимент</center></h2>
       
